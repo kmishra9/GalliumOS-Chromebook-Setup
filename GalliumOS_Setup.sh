@@ -115,6 +115,6 @@ echo "Installing Sublime Text 3"
 sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
 sudo apt-get update
 sudo apt-get upgrade
-sudo apt-get install sublime-text-3
+sudo apt-get install sublime-text-installer
 
 #End of setup script
