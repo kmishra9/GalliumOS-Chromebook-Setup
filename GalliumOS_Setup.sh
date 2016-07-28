@@ -5,6 +5,7 @@
 #	
 #	Enter your GitHub email when prompted (store in EMAIL)
 # 	Enter Full Name when prompted (stored in NAME)
+#	The number of exclamation marks  (!) next to each block indicate the importance of that block from low (!) to high (!!!) 
 
 echo "Beginning GalliumOS Chromebook Setup"
 sudo echo "Asking for sudo password before beginning"
@@ -17,7 +18,7 @@ read EMAIL
 #######
 
 
-####### - Git configurations
+####### - Git configurations (!!!)
 echo ""
 echo "Updating git"
 sudo add-apt-repository ppa:git-core/ppa
@@ -31,31 +32,33 @@ git config --global user.name $NAME
 git config --global credential.helper store
 
 
-####### - Python Graphics
+####### - Python Graphics (!!)
 echo ""
 echo "Installing tkinter"
 sudo apt-get install python-tk
 sudo apt-get install python3-tk 
 
-####### - Python3 Package Manager
+
+####### - Python3 Package Manager (!!!)
 echo ""
 echo "Installing pip"
 sudo apt-get install python-pip
 sudo apt-get install python3-pip
 sudo python3 -m pip install --upgrade pip
 
-####### - Python3 Utility
+
+####### - Python3 Utility (!)
 echo ""
 echo "Installing getch"
 sudo python3 -m pip install getch 
 
-####### - Python3 Utility
+####### - Python3 Utility (!)
 echo ""
 echo "Installing termcolor"
 sudo python3 -m pip install termcolor
 
 
-####### - Screen Utility
+####### - Screen Utility (!!!)
 echo ""
 echo "Installing f.lux GUI"
 sudo add-apt-repository ppa:nathan-renniewaldock/flux
@@ -65,7 +68,7 @@ sudo apt-get install fluxgui
 sudo fluxgui
 
 
-####### - Music Client
+####### - Music Client (!!!)
 echo ""
 echo "Installing Spotify"
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
@@ -75,7 +78,7 @@ sudo apt-get upgrade
 sudo apt-get install spotify-client
 
 
-####### - Battery Optimization 1
+####### - Battery Optimization 1 (!!!)
 echo ""
 echo "Installing Powertop"
 sudo add-apt-repository ppa:linrunner/tlp
@@ -85,7 +88,7 @@ sudo apt-get install tlp
 sudo tlp start
 
 
-####### - Battery Optimaization 2
+####### - Battery Optimaization 2 (!!!)
 echo ""
 echo "Installing Powertop"
 sudo apt-get install powertop
@@ -106,7 +109,7 @@ WantedBy=multi-user.target
 EOF
 
 
-####### Versatile, Lightweight Text Editor
+####### Versatile, Lightweight Text Editor (!!)
 echo ""
 echo "Installing Sublime Text 3"
 sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
