@@ -1,7 +1,6 @@
 #!/bin/bash
 
 #FIRST: 
-#	Download atom-amd64.deb from https://atom.io (leave installer in downloads file)
 #	Download AND Install xflux from https://justgetflux.com/linux.html
 #	
 #	Enter your GitHub email when prompted (store in EMAIL)
@@ -17,6 +16,7 @@ echo -n "Enter your GitHub email and press [ENTER]: "
 read EMAIL
 #######
 
+
 ####### - Git configurations
 echo ""
 echo "Updating git"
@@ -24,10 +24,12 @@ sudo add-apt-repository ppa:git-core/ppa
 sudo apt-get update
 sudo apt-get install git
 
-echo "Configuring git for "
+echo "Configuring git for $NAME with Username: $EMAIL"
 git config --global user.email $EMAIL
 git config --global user.name $NAME
+#Keeps credentials in a file somewhere = less privacy for more convenience. Remove if unwanted
 git config --global credential.helper store
+
 
 ####### - Python Graphics
 echo ""
@@ -55,15 +57,15 @@ sudo python3 -m pip install termcolor
 
 ####### - Screen Utility
 echo ""
-echo "Installing f.lux"
+echo "Installing f.lux GUI"
 sudo add-apt-repository ppa:nathan-renniewaldock/flux
 sudo apt-get update
 sudo apt-get upgrade
-#STILL NEED TO INSTALL HERE (F.LUX)
-fluxgui
+sudo apt-get install fluxgui
+sudo fluxgui
 
 
-####### - Music
+####### - Music Client
 echo ""
 echo "Installing Spotify"
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
@@ -73,7 +75,7 @@ sudo apt-get upgrade
 sudo apt-get install spotify-client
 
 
-####### - Battery Optimization
+####### - Battery Optimization 1
 echo ""
 echo "Installing Powertop"
 sudo add-apt-repository ppa:linrunner/tlp
@@ -83,7 +85,7 @@ sudo apt-get install tlp
 sudo tlp start
 
 
-####### - Battery Optimaization
+####### - Battery Optimaization 2
 echo ""
 echo "Installing Powertop"
 sudo apt-get install powertop
@@ -104,9 +106,12 @@ WantedBy=multi-user.target
 EOF
 
 
-####### Text Editor - Requires dependencies in /Downloads folder... See top for details
+####### Versatile, Lightweight Text Editor
 echo ""
-echo "Installing Atom"
-cd ~/Downloads
-sudo dpkg -i atom-adm64.deb
-#If errors occur while installing Atom: sudo apt-get install -f
+echo "Installing Sublime Text 3"
+sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install sublime-text-3
+
+#End of setup script
