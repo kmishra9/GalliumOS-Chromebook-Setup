@@ -1,14 +1,17 @@
 #!/bin/bash
 
-#FIRST: 
-#	Download AND Install xflux from https://justgetflux.com/linux.html
+#NOTES:
 #	
+#	This script is packaged alongside a 64-bit xflux installation, updated as of 2013. To check for the latest version and any updates go to https://justgetflux.com/linux.html
 #	Enter your GitHub email when prompted (store in EMAIL)
 # 	Enter Full Name when prompted (stored in NAME)
-#	The number of exclamation marks  (!) next to each block indicate the importance of that block from low (!) to high (!!!) 
+#	The number of exclamation marks  (!) next to each block indicate the importance of that block from low (!) to high (!!!)
+#
+#	Developed by Kunal Mishra
 
 echo "Beginning GalliumOS Chromebook Setup"
-sudo echo "Asking for sudo password before beginning"
+echo ""
+sudo echo "Asking for root access before beginning"
 
 #######
 echo -n "Enter your Full Name and press [ENTER]: "
@@ -60,6 +63,9 @@ sudo python3 -m pip install termcolor
 
 ####### - Screen Utility (!!!)
 echo ""
+echo "Installing xflux"
+./xflux
+
 echo "Installing f.lux GUI"
 sudo add-apt-repository ppa:nathan-renniewaldock/flux
 sudo apt-get update
