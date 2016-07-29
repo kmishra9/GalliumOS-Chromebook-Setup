@@ -55,10 +55,34 @@ echo ""
 echo "Installing getch"
 sudo python3 -m pip install getch 
 
+
 ####### - Python3 Utility (!)
 echo ""
 echo "Installing termcolor"
 sudo python3 -m pip install termcolor
+
+
+####### - Statistical Language (!!)
+echo ""
+echo "Installing the R Project for Statistical Computing"
+
+# Appends the CRAN repository to your sources.list file 
+sudo sh -c 'echo "deb http://cran.rstudio.com/bin/linux/debian lenny-cran/" >> /etc/apt/sources.list'
+# Adds the CRAN GPG key, which is used to sign the R packages for security.
+gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
+gpg -a --export E084DAB9 | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install r-base r-base-dev
+
+
+####### - Statistical Language IDE (!!)
+# echo ""
+# echo "Installing the RStudio"
+
+# #This is the latest version of RStudio as of July 28th, 2016
+# #Find the latest installation here: https://www.rstudio.com/products/rstudio/download/
+# sudo apt-get install https://download1.rstudio.org/rstudio-0.99.903-amd64.deb
+
 
 ####### Versatile, Lightweight Text Editor (!!)
 echo ""
@@ -69,6 +93,7 @@ sudo apt-get upgrade
 sudo apt-get install sublime-text-installer
 echo "You can run Sublime Text 3 from Terminal with the command 'subl'"
 
+#End of DevEnv setup script
 
 
-
+### ISSUES STILL WITH INSTALL RSTUDIO
