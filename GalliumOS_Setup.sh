@@ -17,12 +17,21 @@ echo ""
 echo "Installing xflux"
 ./xflux
 
+echo -n "Enter your zipcode and press [ENTER]: "
+read ZIPCODE
+
+sudo xflux -z $ZIPCODE
+
 echo "Installing f.lux GUI"
-sudo add-apt-repository ppa:nathan-renniewaldock/flux
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get install fluxgui
-sudo fluxgui
+sudo apt-get install git python-appindicator python-xdg python-pexpect python-gconf python-gtk2 python-glade2 libxxf86vm1 -y
+cd /tmp
+git clone "https://github.com/xflux-gui/xflux-gui.git"
+cd xflux-gui
+python download-xflux.py
+sudo python setup.py install # OR: python setup.py install --local
+
+# Run flux
+fluxgui
 
 
 ####### - Music Client (!!!)
@@ -64,5 +73,13 @@ ExecStart=/usr/sbin/powertop --auto-tune
 [Install]
 WantedBy=multi-user.target
 EOF
+
+
+####### - Wine (!!!)
+sudo dpkg --add-architecture i386
+sudo add-apt-repository ppa:ubuntu-wine/ppa
+sudo apt-get update
+sudo apt-get install wine1.8
+
 
 #End of setup script

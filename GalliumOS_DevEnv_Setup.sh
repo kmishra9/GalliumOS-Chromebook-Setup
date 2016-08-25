@@ -86,6 +86,40 @@ wget https://download1.rstudio.org/rstudio-0.99.903-amd64.deb
 sudo gdebi -n rstudio-0.99.903-amd64.deb
 rm rstudio-0.99.896-amd64.deb
 
+
+####### - Prerequisite to Node and web development language (!!!)
+echo ""
+echo "Installing the Ruby"
+sudo apt-get install build-essential curl git m4 ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
+
+
+####### - Prerequisite to Node and web development language (!!)
+echo ""
+echo "Installing the Ruby"
+sudo apt-get install build-essential curl git m4 ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
+
+
+####### - Prerequisite to Node and a package manager (!!!)
+echo ""
+echo "Installing linuxbrew"
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)"
+
+echo 'export PATH="$HOME/.linuxbrew/bin:$PATH"' >> ~/.bashrc
+echo 'export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"' >> ~/.bashrc
+echo 'export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"' >> ~/.bashrc
+
+brew update
+brew update
+brew doctor
+
+
+####### - Node (!!!)
+echo ""
+echo "Installing linuxbrew"
+brew install node
+brew upgrade node
+
+
 ####### Versatile, Lightweight Text Editor (!!)
 echo ""
 echo "Installing Sublime Text 3"
