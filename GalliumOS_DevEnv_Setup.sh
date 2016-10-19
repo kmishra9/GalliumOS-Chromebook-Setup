@@ -2,7 +2,7 @@
 
 #NOTES:
 #	
-#	This script installs updates to Git, python, python3, R, RStudio, and Sublime Text 3 
+#	This script installs updates to Git, python, python3, R, RStudio, Brew, Java SDK 7, and Sublime Text 3
 #	Enter your GitHub email when prompted (store in EMAIL)
 # 	Enter Full Name when prompted (stored in NAME)
 #	The number of exclamation marks  (!) next to each block indicate the importance of that block from low (!) to high (!!!)
@@ -128,6 +128,57 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install sublime-text-installer
 echo "You can run Sublime Text 3 from Terminal with the command 'subl'"
+
+
+####### Java SDK 7 (!!!)
+
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java7-installer
+
+#If the above doesn't work, you can download the SDK's at the following links: 
+# 	For Java 7 use this link: https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=java%20jdk%207
+# 	For Java 8 use this link: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+#	Then, follow these instructions: http://www.wikihow.com/Install-Oracle-Java-JDK-on-Ubuntu-Linux
+
+
+####### Intellij IDEA
+
+echo ""
+echo "Installing IntelliJ IDEA..."
+[ $(id -u) != "0" ] && exec sudo "$0" "$@" # We need root to install
+ed=C
+# Fetch the most recent version
+VERSION=$(wget "https://www.jetbrains.com/intellij-repository/releases" -qO- | grep -P -o -m 1 "(?<=https://www.jetbrains.com/intellij-repository/releases/com/jetbrains/intellij/idea/BUILD/)[^/]+(?=/)")
+# Prepend base URL for download
+URL="https://download.jetbrains.com/idea/ideaI$ed-$VERSION.tar.gz"
+# Truncate filename
+FILE=$(basename ${URL})
+# Set download directory
+DEST=~/Downloads/$FILE
+echo "Downloading idea-I$ed-$VERSION to $DEST..."
+# Download binary
+wget -cO ${DEST} ${URL} --read-timeout=5 --tries=0
+echo "Download complete!"
+# Set directory name
+DIR="/opt/idea-I$ed-$VERSION"
+echo "Installing to $DIR"
+# Untar file
+if mkdir ${DIR}; then
+    tar -xzf ${DEST} -C ${DIR} --strip-components=1
+fi
+# Grab executable folder
+BIN="$DIR/bin"
+# Add permissions to install directory
+chmod -R +rwx ${DIR}
+# Set desktop shortcut path
+DESK=/usr/share/applications/IDEA.desktop
+# Add desktop shortcut
+echo "[Desktop Entry]\nEncoding=UTF-8\nName=IntelliJ IDEA\nComment=IntelliJ IDEA\nExec=${BIN}/idea.sh\nIcon=${BIN}/idea.png\nTerminal=false\nStartupNotify=true\nType=Application" -e > ${DESK}
+# Create symlink entry
+ln -s ${BIN}/idea.sh /usr/local/bin/idea
+
+
 
 #End of DevEnv setup script
 

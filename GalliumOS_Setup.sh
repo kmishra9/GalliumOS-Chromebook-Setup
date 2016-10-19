@@ -81,5 +81,8 @@ sudo add-apt-repository ppa:ubuntu-wine/ppa
 sudo apt-get update
 sudo apt-get install wine1.8
 
+#If errors occur while using Wine to install, I've personally found downloading an installer 
+#for the Windows App and running with the command "wine [Program Name]"" works fine
+
 
 #End of setup script
